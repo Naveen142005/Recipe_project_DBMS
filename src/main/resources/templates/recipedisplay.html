@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Gemini AI</title>
+</head>
+<body>
+    <h1>Chat with Gemini AI</h1>
+    <div id="chat-output"></div>
+    <textarea id="user-input" rows="4" cols="50"></textarea>
+    <button id="send">Send</button>
+    <script type="importmap">
+        {
+            "imports": {
+              "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+          }
+    </script>
+    <script type="module">
+        const send = document.getElementById('send')
+        const input = document.getElementById('user-input')
+        // Import the GoogleGenerativeAI module using a relative path or URL
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        const API_KEY = "AIzaSyCVAXq8-1NleCyQXEzGdYkakwOFMX50a60";
+
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        
+
+        send.addEventListener('click',async ()=> {
+            const model = genAI.getGenerativeModel({model:"gemini-pro"})    
+            const prompt = input.value
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const text = response.text();
+           
+            
+        })
+        document.createElement('p').innerHTML = text;
+        
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Recipe Found</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.center {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+}
+
+.search-container input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.ai-container {
+    margin-top: 20px;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ai-container h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.ai-container textarea {
+    width: 100%;
+    height: 150px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ai-container button {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ai-container button:hover {
+    background-color: #218838;
+}
+    .expoler_btn {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        padding-top: 60px;
+    }.btn{
+    font-weight: 600;
+    font-size: 15pt;
+    padding: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    position: relative;
+    transition: 1s;
+    user-select: none;
+}
+
+.btn::before{
+    content: '';
+    position: absolute;
+    background-color: white;
+    width: 20%;
+    top:0;
+    left:0;
+    height: 2px;
+    transition: 1s;
+}
+.btn span::before{
+    content: '';
+    position: absolute;
+    width: 2px;
+    left:0;
+    top:0;
+    height: 50%;
+    transition: 1s;
+    background-color: white;
+}
+
+.btn::after{
+    content: '';
+    position: absolute;
+    bottom:0;
+    right:0;
+    width:20%;
+    height: 2px;
+    transition: 1s;
+    background-color: rgb(214, 214, 10);
+}
+.btn span::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    transition: 1s;
+    right: 0;
+    width: 2px;
+    height: 50%;
+    background-color: rgb(214, 214, 10);
+}
+
+.btn:hover::before , .btn:hover::after{
+    width: 107%;
+}
+.btn:hover span::after  { 
+    height: 117%;
+}
+.btn:hover span::before{
+     height: 117%;
+}
+
+.btn:hover::before{
+    width: 106%;
+}
+    .expoler_btn .btn  .btn_word{
+    padding:  0 12px;
+    color:bisque;
+    transition: 1s;
+    }
+    .expoler_btn .btn:hover span {
+    color: aqua;
+}
+
+        </style>
+    </head>
+    <body>
+
+        <div class="expoler_btn">
+            <!--            <a href="#scroll" style="text-decoration: none;">-->
+                            <div class="btn">
+                                <span></span>
+                                <span class="btn_word"> Expoler Now </span>
+                            </div>
+            <!--            </a>-->
+                    </div>
+</body>
+</html>
