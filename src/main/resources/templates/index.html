@@ -1,86 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/src/main/resources/static/styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <style>
-        .add_new_form form #add_success{
-            
+        .add_new_form form #add_success {
+
             display: flex;
             justify-content: center;
             font-size: 14px;
             color: green;
             transition: .5s ease-in-out all;
         }
-        .there_submit{
+
+        .there_submit {
             opacity: 1;
         }
-        .none_submit{
+
+        .none_submit {
             opacity: 0 !important;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="main">
         <div id="add_new_form" class="none">
-            <form action="/recipes/add" method="post"  enctype="multipart/form-data">
-                <div style="text-align: center;">Add New Food</div>
-                <div class="x">
-                    <div class="y"><img src="/images/close.png" alt=""></div>
-                </div>
-                <div id="add_success" class="none_submit" >
-                    <i class="fa-solid fa-circle-check" style="color: green; margin-right: 4px;"></i>
-                    Recipe added Successfully
-                </div>
-                <input type="text" id="title" name="title" placeholder="Title" required onkeypress="f(event,'descrip')"><br>
-        
-                <textarea id="descrip" name="description" placeholder="Description"></textarea><br>
-                <input type="number" id="prepTime" name="prepTime" min="0" placeholder="Preparation Time (minutes)" oninput="sum()" onkeypress="f(event,'cookTime')"><br>
+            <form action="" method="post">
+                <div>
+                    <div style="text-align: center;">Add New Food</div>
+                    <div class="x">
+                        <div class="y"><img src="/images/close.png" alt=""></div>
+                    </div>
+                    <div id="add_success" class="none_submit">
+                        <i class="fa-solid fa-circle-check" style="color: green; margin-right: 4px;"></i>
+                        Recipe added Successfully
+                    </div>
+                    <input type="text" id="title" name="title" placeholder="Title" required
+                        onkeypress="f(event,'descrip')"><br>
 
-                <input type="number" id="cookTime" name="cookTime" min="0"   onkeypress="f(event,'totalTime')" placeholder="Cooking Time (minutes)" oninput="sum()"><br>
-                
-                <input type="number" id="totalTime" name="totalTime" min="0"   onkeypress="f(event,'mainIngredient')" placeholder="Total Time (minutes)"><br>
-                
-                <input type="text" id="mainIngredient" name="mainIngredient"   onkeypress="f(event,'instructions')" placeholder="Main Ingredient"><br>
-                
-                <textarea id="instructions" name="instructions"   placeholder="Instructions"></textarea><br>
+                    <textarea id="descrip" name="description" placeholder="Description"></textarea><br>
+                    <input type="number" id="prepTime" name="prepTime" min="0" placeholder="Preparation Time (minutes)"
+                        onkeypress="f(event,'cookTime')"><br>
 
-                <input type="file" id="image" name="file" required>
-                <button type="submit" id="submit" onclick="sumbit_fun()">Create Recipe</button>
-                
+                    <input type="number" id="cookTime" name="cookTime" min="0" onkeypress="f(event,'totalTime')"
+                        placeholder="Cooking Time (minutes)"><br>
+
+                    <input type="text" id="mainIngredient" name="mainIngredient" onkeypress="f(event,'instructions')"
+                        placeholder="Main Ingredient"><br>
+
+                    <textarea id="instructions" name="instructions" placeholder="Instructions"></textarea><br>
+
+                    <input type="file" id="image" name="file" required>
+
+                    <div class="btn" id="submitbtn" style="
+                     background-color: #4CAF50;
+                    color: white;
+                    padding: 14px 20px;
+                    margin: 8px 0;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    width: 100%;
+                    text-align: center;
+                    ">Create Recipe</div>
+                </div>
             </form>
         </div>
-<!--        <video src="images/bg-video.mp4" autoplay loop muted></video>-->
+        <!--        <video src="images/bg-video.mp4" autoplay loop muted></video>-->
 
         <div class="list">
             <div class="logo">
                 <img src="/images/logo.png" alt="picture">
-               <span class="logo-name">FoodTopiya</span>
+                <span class="logo-name">FoodTopiya</span>
             </div>
             <div class="list">
                 <ul>
                     <li>
-                        <i class="fa-solid fa-house"></i> 
-                        Home</li>
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </li>
                     <li class="login">
                         <i class="fa-solid fa-right-to-bracket"></i>
-                        SignUp</li>
+                        SignUp
+                    </li>
                     <li>
-                        <i class="fa-solid fa-heart"></i>Favorites</li>
+                        <i class="fa-solid fa-heart"></i>Favorites
+                    </li>
                     <li>
-                        <i class="fa-solid fa-user"></i>Profile</li>
+                        <i class="fa-solid fa-user"></i>Profile
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="head">
-             <header>
-                Delicious recipes 
+            <header>
+                Delicious recipes
                 <br>
                 <span class="header-2nd-line">
-                    Daily updated   
+                    Daily updated
                 </span>
             </header>
         </div>
@@ -90,29 +114,29 @@
                 <span class="search-icon" onclick="submitSearch()"><i class="fas fa-search"></i></span>
             </div>
         </div>
-          
-          
-            <div class="recipes">
-                <div class="recipe_1" id="recipe1" data-id="1">
-                    <div class="hide_1">
-                            Mediterranean Marvel
-                    </div>
+
+
+        <div class="recipes">
+            <div class="recipe_1" id="recipe1" data-id="1">
+                <div class="hide_1">
+                    Mediterranean Marvel
                 </div>
-                <div class="recipe_2" data-id="2">
-                    <div class="hide_2">
-                            Rolled Revelries
-                    </div>
+            </div>
+            <div class="recipe_2" data-id="2">
+                <div class="hide_2">
+                    Rolled Revelries
                 </div>
-                <div class="recipe_3" data-id="3">
-                    <div class="hide_3">
-                            CitrusCharm Chick
-                    </div>
+            </div>
+            <div class="recipe_3" data-id="3">
+                <div class="hide_3">
+                    CitrusCharm Chick
                 </div>
-                <div class="addnew" onclick="fun()">
-                   <div>&plus;
-                   </div>
-                    <p>Add New</p>
+            </div>
+            <div class="addnew" onclick="fun()">
+                <div>&plus;
                 </div>
+                <p>Add New</p>
+            </div>
         </div>
         <!-- <div class="expoler_btn">
             
@@ -136,6 +160,7 @@
       
              -->
 
-    <script src="/src/main/resources/static/project.js"></script> 
+        <script src="/project.js"></script>
 </body>
+
 </html>

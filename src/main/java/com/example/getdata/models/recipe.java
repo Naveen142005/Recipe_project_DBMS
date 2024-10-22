@@ -1,5 +1,7 @@
 package com.example.getdata.models;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,22 +38,16 @@ public class recipe {
     @Column(name = "instructions", columnDefinition = "TEXT")
     private String instructions;
 
+    @Lob
     private byte[] image;
 
     public recipe() {
         // Default constructor
     }
 
-    public recipe(String title, String description, Integer prepTime, Integer cookTime, Integer totalTime, String mainIngredient, String instructions,byte[] image) {
-        this.title = title;
-        this.description = description;
-        this.prepTime = prepTime;
-        this.cookTime = cookTime;
-        this.totalTime = totalTime;
-        this.mainIngredient = mainIngredient;
-        this.instructions = instructions;
-        this.image = image;
-
+    public void setImage(MultipartFile image2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setImage'");
     }
     // Constructors, getters, and setters
     // You can generate them using your IDE or write them manually

@@ -234,7 +234,7 @@ body{
     overflow: hidden;
 }
 .none{
-    display: none;
+    display: none !important;
 }
 form {
     overflow: scroll;
@@ -265,7 +265,7 @@ textarea {
     height: 100px;
 }
 
-button {
+.btn {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -274,9 +274,10 @@ button {
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    text-align: center;
 }
 
-button:hover {
+.btn:hover {
     background-color: #45a049;
 }
 .x div{
