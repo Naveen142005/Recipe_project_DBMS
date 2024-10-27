@@ -96,7 +96,7 @@ btn.addEventListener('click', (event) => {
             setTimeout(()=>{
                 const Successbtn_ = document.getElementById('add_success');
                 const green_ = document.getElementById('green');
-                green_.classList.add('remove');
+                green_.classList.remove('border');
                 Successbtn_.classList.add('none_submit');
             }  , 1000)
         }

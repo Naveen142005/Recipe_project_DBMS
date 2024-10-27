@@ -92,6 +92,18 @@ video{
     color: rgb(44, 189, 169);
     text-align: center;
 }
+@keyframes name {
+    from{
+        box-shadow: 0 0 50px 0 green;
+        
+    }
+    to{
+        box-shadow: 0 0 2px 0 green;
+    }
+}
+.border{
+    animation: name .5s linear !important;
+}
 .main  .head .header-2nd-line{
     text-align: center;
 }

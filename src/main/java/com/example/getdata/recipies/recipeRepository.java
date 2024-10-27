@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface recipeRepository extends JpaRepository<recipe,Integer> {
-    @Modifying
-    @Query(value = "SELECT r FROM recipe r WHERE r.title = :title")
-    List<recipe> findByTitle(String title);
+    @Query("SELECT r FROM recipe r WHERE LOWER(r.title) = LOWER(:title)")
+    List<recipe> findByTitle(@Param("title") String title);
+    
 
 }

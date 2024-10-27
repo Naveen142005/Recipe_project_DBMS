@@ -5,7 +5,6 @@ import com.example.getdata.models.recipe;
 
 import org.hibernate.internal.ExceptionConverterImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class recipeController {
@@ -36,10 +36,9 @@ public class recipeController {
             @RequestParam("totalTime") int totaltime,
             @RequestParam("mainIngredient") String main,
             @RequestParam("instructions")  String inst,
-            @RequestParam("imageFile")  MultipartFile image
+            @RequestParam(value = "imageFile" , required = false)  MultipartFile image
     ){
         recipe rs = new recipe();
-
         rs.setTitle(title);
         rs.setDescription(description);
         rs.setPrepTime(preptime);
@@ -48,12 +47,9 @@ public class recipeController {
         rs.setMainIngredient(main);
         rs.setInstructions(inst);
 
-        System.out.println(title);
-        System.out.println(totaltime);
         
         try {
-            byte[] img = image.getBytes();
-            rs.setImage(img);
+            rs.setImage((image.getBytes()));
             repo.save(rs);
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
@@ -62,6 +58,16 @@ public class recipeController {
             return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         
+    }
+
+    @GetMapping("/search/{recipe_name}")
+    
+    public String RecipeLoader(@PathVariable("recipe_name") String name){
+        System.out.println(name);
+        List<recipe> recipe = repo.findByTitle(name);
+        ModelAndView mv = new ModelAndView("recipePage");
+        mv.addObject("recipePage", recipe);
+        return "recipePage";
     }
     
 
