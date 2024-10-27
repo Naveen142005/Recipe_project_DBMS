@@ -23,6 +23,9 @@
         .none_submit {
             opacity: 0 !important;
         }
+        .border{
+            border: 1.2px solid rgb(0, 219, 0) !important;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -32,10 +35,10 @@
 <body>
     <div class="main">
         <div id="add_new_form" class="none">
-            <form action="" method="post">
+            <form action="" method="post" id="green">
                 <div>
                     <div style="text-align: center;">Add New Food</div>
-                    <div class="x">
+                    <div class="x" id="cross">
                         <div class="y"><img src="/images/close.png" alt=""></div>
                     </div>
                     <div id="add_success" class="none_submit">

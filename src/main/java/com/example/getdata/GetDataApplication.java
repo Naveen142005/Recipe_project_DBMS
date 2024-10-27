@@ -8,6 +8,9 @@ public class GetDataApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GetDataApplication.class, args);
+		System.out.println('\n');
+		System.out.println("");
+		System.out.println("Success");;
 	}
 
 }

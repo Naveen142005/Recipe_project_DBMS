@@ -18,6 +18,8 @@ public class loginController {
     @PostMapping("/savepage")
     public String LoginTODb(login data){
         ls.save(data);
-        return "redirect:/recipes/";
+        System.out.println("user:" + data.getEmailId());
+        System.out.println("pass" + data.getPassword());
+        return "redirect:/";
     }
 }

@@ -39,17 +39,11 @@ public class recipe {
     private String instructions;
 
     @Lob
+    @Column(columnDefinition = "MEDIUMBLOB") 
     private byte[] image;
 
     public recipe() {
         // Default constructor
     }
-
-    public void setImage(MultipartFile image2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setImage'");
-    }
-    // Constructors, getters, and setters
-    // You can generate them using your IDE or write them manually
 }
 

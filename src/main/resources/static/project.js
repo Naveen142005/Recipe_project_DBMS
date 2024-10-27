@@ -14,17 +14,22 @@ document.querySelector('.recipe_3').addEventListener('mouseout', function () {
 });
 
 
+const form = document.getElementById('add_new_form');
+
 
 function fun() {
-    const form = document.getElementById('add_new_form');
     console.log("hello")
     form.classList.remove('none');
     form.classList.add('there');
 }
-document.querySelector('.y').addEventListener('click', () => {
+const x = document.getElementById('cross')
+console.log(x);
+
+x.addEventListener('click', () => {
     form.classList.remove('there');
     form.classList.add('none');
 })
+
 document.querySelector('.login').addEventListener('click', () => {
     window.location.href = "/recipes/login"
 })
@@ -41,70 +46,66 @@ function f(event, nxt) {
 
 
 
-
-
 const btn = document.getElementById('submitbtn')
 console.log(btn)
 
-btn.addEventListener('click', () => {
+btn.addEventListener('click', (event) => {
+    event.preventDefault();
 
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('descrip').value;
-    let prepTime = document.getElementById('prepTime').value;
-    let cookTime = document.getElementById('cookTime').value;
-    let mainIngredient = document.getElementById('mainIngredient').value;
-    let instructions = document.getElementById('instructions').value
-    let imageFile = document.getElementById('image').files[0];
+    let title = document.getElementById('title');
+    let description = document.getElementById('descrip');
+    let prepTime = document.getElementById('prepTime');
+    let cookTime = document.getElementById('cookTime');
+    let mainIngredient = document.getElementById('mainIngredient');
+    let instructions = document.getElementById('instructions')
+    let imageFile = document.getElementById('image');
 
-    console.log("Title: ", title);
-    console.log("Description: ", description);
-    console.log("Preparation Time: ", prepTime);
-    console.log("Cooking Time: ", cookTime);
-    console.log("Main Ingredient: ", mainIngredient);
-    console.log("Instructions: ", instructions);
-    console.log("Image file: ", imageFile);
 
-    let totalTime = prepTime + cookTime;
+    let totalTime = prepTime.value + cookTime.value;
 
-   // window.location.href = "http://localhost:8080/add"
+    const formData = new FormData();
+    formData.append("title", title.value);
+    formData.append("description", description.value);
+    formData.append("prepTime", Number(prepTime.value));
+    formData.append("cookTime", Number(cookTime.value));
+    formData.append("totalTime", totalTime);
+    formData.append("mainIngredient", mainIngredient.value);
+    formData.append("instructions", instructions.value);
+    formData.append("imageFile", imageFile.files[0]);
 
-    const pro = (imageFile) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader()
-
-            reader.onload = () => {
-                resolve(reader.result)
-            }
-            reader.onerror = () => {
-                reject(new Error("Error reading file")); 
-            };
-
-            reader.readAsDataURL(imageFile)
-        })
-    }
-
-    const obj = { title, description, prepTime, cookTime, totalTime, mainIngredient, instructions }
-
-    const sendData = async (imageFile, obj) => {
-       await pro(imageFile)
-            .then(async res => {
-               await fetch('http://localhost:8080/add', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        recipe_data: obj,   
-                        image: res  
-                    })
-                })
-                .then(isTrue => {
-                   if (isTrue) alert("SuccessFully added")
-                    else alert ("False")
-                })
-                .catch("Not added");
-            })
-    }
-    sendData(imageFile, obj).catch(e => console.log("e")
-    )
+    fetch("http://localhost:8080/add" , {
+        method:"POST",
+        body:formData
+    })
+    .then(res => {
+        if (res.ok) return res.json();
+        else throw new Error("Server error");
+    })
+    .then(isTrue => {
+        if(isTrue) {
+            const Successbtn = document.getElementById('add_success');
+            const green = document.getElementById('green');
+            green.classList.add('border');
+            Successbtn.classList.remove('none_submit');
+            title.value =""
+            description.value =""
+            prepTime.value =""
+            cookTime.value =""
+            mainIngredient.value =""
+            instructions.value =""
+            setTimeout(()=>{
+                const Successbtn_ = document.getElementById('add_success');
+                const green_ = document.getElementById('green');
+                green_.classList.add('remove');
+                Successbtn_.classList.add('none_submit');
+            }  , 1000)
+        }
+        else {
+            alert("Not Success !!")
+        }
+    })
+    .catch(e => {
+        alert("ERROR")
+        console.log(e);
+    })
 })
